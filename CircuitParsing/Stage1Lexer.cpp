@@ -10,10 +10,10 @@ namespace CircuitParsing {
   };
 
   Stage1Lexer::Stage1Lexer(string filename) {
-      this->fileHandler = new ifstream(filename, ifstream::in);
+      ifstream fileHandler(filename, ifstream::in);
 
       string line;
-      while (getline(*this->fileHandler, line)) {
+      while (getline(fileHandler, line)) {
           this->addToOutput(this->lexLine(line));
       }
   };
@@ -62,11 +62,5 @@ namespace CircuitParsing {
       }
   };
 
-  bool isIdentifyerCharacter() {
-
-  }
-
-  Stage1Lexer::~Stage1Lexer() {
-      delete this->fileHandler;
-  };
+  Stage1Lexer::~Stage1Lexer() {};
 }

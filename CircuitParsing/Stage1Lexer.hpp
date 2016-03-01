@@ -24,8 +24,6 @@ namespace CircuitParsing {
 
       LexemeStream output;
   private:
-      ifstream* fileHandler;
-
       LexemeStream lexLine(string line);
       string removeComments(string line);
       void addToOutput(LexemeStream toAdd);
