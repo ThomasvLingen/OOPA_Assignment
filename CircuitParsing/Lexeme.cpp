@@ -18,7 +18,7 @@ namespace CircuitParsing {
 
   std::ostream& operator<<(std::ostream& os, LexemeType type){
       switch(type){
-          case LexemeType::IDENTIFYER: os << "IDENTIFYER"; return os;
+          case LexemeType::IDENTIFYER: os << "IDENTIFIER"; return os;
           case LexemeType::COLON: os << ":"; return os;
           case LexemeType::SEMICOLON: os << ";"; return os;
           case LexemeType::COMMA: os << ","; return os;
