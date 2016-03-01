@@ -8,13 +8,13 @@
 #include <string>
 #include <vector>
 #include <map>
-#include <regex>
+#include <functional>
+#include <iostream>
 
 namespace CircuitParsing {
   using std::string;
   using std::vector;
   using std::map;
-  using std::regex_match;
 
   enum LexemeType {
       IDENTIFYER,
@@ -23,11 +23,27 @@ namespace CircuitParsing {
       COMMA
   };
 
-  static map<LexemeType, string> LexemeTypesRegex = {
-          {LexemeType::IDENTIFYER, "[a-zA-Z0-9_]"},
-          {LexemeType::COLON, ":"},
-          {LexemeType::SEMICOLON, ";"},
-          {LexemeType::COMMA, ","}
+  static map<LexemeType, std::function<bool(char)>> LexemeTypesCheckers = {
+      {LexemeType::COLON,
+          [](char character) {
+              return character == ':';
+          }
+      },
+      {LexemeType::SEMICOLON,
+          [](char character) {
+              return character == ';';
+          }
+      },
+      {LexemeType::COMMA,
+          [](char character) {
+              return character == ',';
+          }
+      },
+      {LexemeType::IDENTIFYER,
+          [](char character) {
+              return isalpha(character) || isdigit(character) || character == '_';
+          }
+      }
   };
 
   class Lexeme {
@@ -43,6 +59,7 @@ namespace CircuitParsing {
   };
 
   typedef vector<Lexeme> LexemeStream;
+  std::ostream& operator<<(std::ostream& os, LexemeType type);
 }
 
 #endif //OOPA_CIRCUITLEXEME_HPP

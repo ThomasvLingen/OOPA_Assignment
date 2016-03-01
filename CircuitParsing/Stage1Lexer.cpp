@@ -33,8 +33,6 @@ namespace CircuitParsing {
                   currentIdentifyer += *currentChar;
 
                   if(!Lexeme::isLexeme(LexemeType::IDENTIFYER, nextChar)){
-                      cout << "Pushing: " << currentIdentifyer << endl;
-
                       lexed_line.push_back(Lexeme(LexemeType::IDENTIFYER, currentIdentifyer));
 
                       currentIdentifyer = "";

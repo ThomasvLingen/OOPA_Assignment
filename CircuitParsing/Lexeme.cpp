@@ -13,7 +13,15 @@ namespace CircuitParsing {
   Lexeme::~Lexeme() {};
 
   bool Lexeme::isLexeme(LexemeType lexemeType, char character) {
-      string charStr(1, character);
-      return regex_match(charStr, std::regex(LexemeTypesRegex[lexemeType]));
+      return LexemeTypesCheckers[lexemeType](character);
+  }
+
+  std::ostream& operator<<(std::ostream& os, LexemeType type){
+      switch(type){
+          case LexemeType::IDENTIFYER: os << "IDENTIFYER"; return os;
+          case LexemeType::COLON: os << ":"; return os;
+          case LexemeType::SEMICOLON: os << ";"; return os;
+          case LexemeType::COMMA: os << ","; return os;
+      }
   }
 }
