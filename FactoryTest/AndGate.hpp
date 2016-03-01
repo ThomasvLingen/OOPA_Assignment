@@ -7,8 +7,6 @@
 
 #include "Gate.hpp"
 
-#include <functional>
-
 #include "GateFactory.hpp"
 
 namespace FactoryTest {

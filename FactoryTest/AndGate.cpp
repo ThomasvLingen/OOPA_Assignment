@@ -12,6 +12,7 @@ namespace FactoryTest {
   AndGate::AndGate() : Gate() {
       this->type = "AND LOL";
   };
+
   AndGate::~AndGate() {};
 
   Gate* AndGate::constructor() {

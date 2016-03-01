@@ -6,7 +6,6 @@
 #define OOPA_CIRCUITSIM_GATE_HPP
 
 #include <string>
-#include <iostream>
 
 #include "GateFactory.hpp"
 

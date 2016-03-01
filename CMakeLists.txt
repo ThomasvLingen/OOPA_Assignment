@@ -11,6 +11,6 @@ set(SOURCE_FILES
     FactoryTest/GateFactory.hpp FactoryTest/GateFactory.cpp
     FactoryTest/Gate.hpp FactoryTest/Gate.cpp
     FactoryTest/AndGate.hpp FactoryTest/AndGate.cpp
-)
+    FactoryTest/OrGate.cpp FactoryTest/OrGate.hpp)
 
 add_executable(OOPA_CircuitSim ${SOURCE_FILES})
