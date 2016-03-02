@@ -16,11 +16,11 @@ namespace FactoryTest {
 
   class Gate;
 
-  static map<string, Gate*> gateMap = {};
+  static map<string, function<Gate*()>> gateMap = {};
 
   class GateFactory {
   public:
-      static void assign(string name, Gate* constructor);
+      static void assign(string name, function<Gate*()> constructor);
       static Gate* create(string name);
   private:
   };

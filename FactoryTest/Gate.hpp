@@ -18,8 +18,6 @@ namespace FactoryTest {
       Gate(string type);
       Gate();
       virtual ~Gate();
-
-      virtual Gate* constructor()=0;
   private:
   };
 }

@@ -13,9 +13,9 @@ namespace FactoryTest {
       OrGate(string type);
       OrGate();
       ~OrGate();
-
-      Gate* constructor();
   };
+
+  OrGate* orConstructor();
 }
 
 

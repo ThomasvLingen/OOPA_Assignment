@@ -5,17 +5,18 @@
 #include "OrGate.hpp"
 
 namespace FactoryTest {
+  // Assigns the gate to the factory
   OrGate::OrGate(string type) : Gate(type) {
-      GateFactory::assign(type, this->constructor());
+      GateFactory::assign(type, orConstructor);
   }
 
   OrGate::OrGate() : Gate() {
-    this->type = "OR LOL";
+    this->type = "I AM AN OR GATE!";
+  };
+
+  OrGate* orConstructor() {
+      return new OrGate();
   };
 
   OrGate::~OrGate() {};
-
-  Gate* OrGate::constructor() {
-      return new OrGate();
-  }
 }

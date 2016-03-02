@@ -5,17 +5,18 @@
 #include "AndGate.hpp"
 
 namespace FactoryTest {
+  // Assigns the gate to the factory
   AndGate::AndGate(string type) : Gate(type) {
-      GateFactory::assign(type, this->constructor());
+      GateFactory::assign(type, andConstructor);
   }
 
   AndGate::AndGate() : Gate() {
-      this->type = "AND LOL";
+      this->type = "I AM AN AND GATE!";
+  };
+
+  AndGate* andConstructor(){
+      return new AndGate();
   };
 
   AndGate::~AndGate() {};
-
-  Gate* AndGate::constructor() {
-      return new AndGate();
-  }
 }

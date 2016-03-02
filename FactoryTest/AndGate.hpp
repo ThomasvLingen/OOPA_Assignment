@@ -15,8 +15,9 @@ namespace FactoryTest {
       AndGate(string type);
       AndGate();
       ~AndGate();
-      Gate* constructor();
   };
+
+  AndGate* andConstructor();
 }
 
 

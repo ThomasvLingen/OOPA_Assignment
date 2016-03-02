@@ -5,11 +5,11 @@
 #include "GateFactory.hpp"
 
 namespace FactoryTest {
-  void GateFactory::assign(string name, Gate* gate) {
-      gateMap[name] = gate;
+  void GateFactory::assign(string name, function<Gate*()> constructor) {
+      gateMap[name] = constructor;
   };
 
   Gate* GateFactory::create(string name) {
-      return gateMap[name]->constructor();
+      return gateMap[name]();
   }
 }
