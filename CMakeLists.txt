@@ -9,6 +9,7 @@ set(SOURCE_FILES
     CircuitParsing/Lexeme.hpp CircuitParsing/Lexeme.cpp
     CircuitParsing/Stage1Lexer.hpp CircuitParsing/Stage1Lexer.cpp
     CircuitUtility/StrUtil.cpp CircuitUtility/StrUtil.hpp
+    CircuitParsing/Stage1LexemePool.hpp CircuitParsing/Stage1LexemePool.cpp
 )
 
 add_executable(OOPA_CircuitSim ${SOURCE_FILES})

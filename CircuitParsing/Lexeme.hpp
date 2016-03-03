@@ -14,7 +14,6 @@
 namespace CircuitParsing {
   using std::string;
   using std::vector;
-  using std::map;
   using std::function;
 
   enum LexemeType {
@@ -26,12 +25,6 @@ namespace CircuitParsing {
 
   typedef function<bool(char)> LexemeTypeChecker;
 
-  // Instead of having a bunch of namespaced 'globals', this should probably be solved with a class managing a lexeme pool.
-  // TODO: write a proper LexemePool class
-  extern map<LexemeType, LexemeTypeChecker> LexemeTypesCheckers;
-  extern map<LexemeType, string> LexemeNames;
-  extern vector<LexemeType> SingleCharLexemes;
-
   class Lexeme {
   public:
       Lexeme();
@@ -40,16 +33,10 @@ namespace CircuitParsing {
 
       LexemeType type;
       string value;
-
-      static bool isLexeme(LexemeType lexemeType, char character);
-
   private:
-      static void addLexemeToPool(LexemeType type, LexemeTypeChecker typeChecker, bool isSingleChar, string name);
   };
 
   typedef vector<Lexeme> LexemeStream;
-
-  std::ostream& operator<<(std::ostream& os, LexemeType type);
 }
 
 #endif //OOPA_CIRCUITLEXEME_HPP

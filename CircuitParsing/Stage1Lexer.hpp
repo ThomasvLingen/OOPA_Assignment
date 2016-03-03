@@ -10,6 +10,7 @@
 #include <vector>
 
 #include "Lexeme.hpp"
+#include "Stage1LexemePool.hpp"
 #include "../CircuitUtility/StrUtil.hpp"
 
 namespace CircuitParsing {

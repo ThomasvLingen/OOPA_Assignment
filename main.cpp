@@ -4,9 +4,6 @@
 using namespace std;
 
 int main() {
-    // Sets up the lexemes
-    CircuitParsing::Lexeme();
-
     // Lex the input file
     CircuitParsing::Stage1Lexer appels("/home/mafn/School/OOPatronen/Practicum/Assignment/circuit1.txt");
 
