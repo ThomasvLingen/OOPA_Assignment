@@ -28,11 +28,11 @@ namespace CircuitParsing {
           string currentIdentifyer = "";
 
           for(string::iterator currentChar = line.begin(); currentChar != line.end(); currentChar++) {
-              if (Lexeme::isLexeme(LexemeType::IDENTIFYER, *currentChar)) {
-                  char nextChar = *next(currentChar, 1);
+              if (this->currentCharIsLexeme(currentChar, LexemeType::IDENTIFYER)) {
                   currentIdentifyer += *currentChar;
 
-                  if(!Lexeme::isLexeme(LexemeType::IDENTIFYER, nextChar)){
+                  // If the next character is not part of an identifyer whilst the current one is, it's the end of an identifyer!
+                  if(!this->nextCharIsLexeme(currentChar, LexemeType::IDENTIFYER)){
                       lexed_line.push_back(Lexeme(LexemeType::IDENTIFYER, currentIdentifyer));
 
                       currentIdentifyer = "";
@@ -49,6 +49,14 @@ namespace CircuitParsing {
 
       return lexed_line;
   };
+
+  bool Stage1Lexer::currentCharIsLexeme(string::iterator currentChar, LexemeType type) {
+      return Lexeme::isLexeme(type, *currentChar);
+  }
+
+  bool Stage1Lexer::nextCharIsLexeme(string::iterator currentChar, LexemeType type) {
+      return Lexeme::isLexeme(type, *next(currentChar, 1));
+  }
 
   string Stage1Lexer::removeComments(string line) {
       size_t commentIndex = line.find('#');

@@ -27,6 +27,8 @@ namespace CircuitParsing {
       LexemeStream lexLine(string line);
       string removeComments(string line);
       void addToOutput(LexemeStream toAdd);
+      bool currentCharIsLexeme(string::iterator currentChar, LexemeType type);
+      bool nextCharIsLexeme(string::iterator currentChar, LexemeType type);
   };
 }
 
