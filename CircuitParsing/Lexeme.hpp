@@ -15,6 +15,7 @@ namespace CircuitParsing {
   using std::string;
   using std::vector;
   using std::map;
+  using std::function;
 
   enum LexemeType {
       IDENTIFYER,
@@ -23,32 +24,17 @@ namespace CircuitParsing {
       COMMA
   };
 
-  static map<LexemeType, std::function<bool(char)>> LexemeTypesCheckers = {
-      {LexemeType::COLON,
-          [](char character) {
-              return character == ':';
-          }
-      },
-      {LexemeType::SEMICOLON,
-          [](char character) {
-              return character == ';';
-          }
-      },
-      {LexemeType::COMMA,
-          [](char character) {
-              return character == ',';
-          }
-      },
-      {LexemeType::IDENTIFYER,
-          [](char character) {
-              return isalpha(character) || isdigit(character) || character == '_';
-          }
-      }
-  };
+  typedef function<bool(char)> LexemeTypeChecker;
+
+  // Instead of having a bunch of namespaced 'globals', this should probably be solved with a class managing a lexeme pool.
+  // TODO: write a proper LexemePool class
+  extern map<LexemeType, LexemeTypeChecker> LexemeTypesCheckers;
+  extern map<LexemeType, string> LexemeNames;
+  extern vector<LexemeType> SingleCharLexemes;
 
   class Lexeme {
   public:
-
+      Lexeme();
       Lexeme(LexemeType type, string value);
       virtual ~Lexeme();
 
@@ -56,9 +42,13 @@ namespace CircuitParsing {
       string value;
 
       static bool isLexeme(LexemeType lexemeType, char character);
+
+  private:
+      static void addLexemeToPool(LexemeType type, LexemeTypeChecker typeChecker, bool isSingleChar, string name);
   };
 
   typedef vector<Lexeme> LexemeStream;
+
   std::ostream& operator<<(std::ostream& os, LexemeType type);
 }
 

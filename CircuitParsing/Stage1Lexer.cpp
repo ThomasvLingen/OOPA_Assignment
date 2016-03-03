@@ -23,7 +23,6 @@ namespace CircuitParsing {
       line = this->removeComments(line);
       line = CircuitUtility::StrUtil::removeSpaces(line);
 
-      // TODO: refactor this disgusting crap
       if (!line.empty()) {
           string currentIdentifyer = "";
 
@@ -39,8 +38,8 @@ namespace CircuitParsing {
                   }
               }
 
-              for(LexemeType lexemeType : {LexemeType::SEMICOLON, LexemeType::COLON, LexemeType::COMMA }) {
-                  if (Lexeme::isLexeme(lexemeType, *currentChar)) {
+              for(CircuitParsing::LexemeType lexemeType : CircuitParsing::SingleCharLexemes) {
+                  if (this->currentCharIsLexeme(currentChar, lexemeType)) {
                       lexed_line.push_back(Lexeme(lexemeType, ""));
                   }
               }
