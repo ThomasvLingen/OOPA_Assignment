@@ -10,8 +10,6 @@ namespace CircuitParsing {
   };
 
   Stage1Lexer::Stage1Lexer(string filename) {
-      // This sets up the LexemePool so that it has all the lexemes
-      Stage1LexemePool();
       ifstream fileHandler(filename, ifstream::in);
 
       string line;
@@ -40,7 +38,7 @@ namespace CircuitParsing {
                   }
               }
 
-              for(CircuitParsing::LexemeType lexemeType : Stage1LexemePool::SingleCharLexemes) {
+              for(CircuitParsing::LexemeType lexemeType : pool.SingleCharLexemes) {
                   if (this->currentCharIsLexeme(currentChar, lexemeType)) {
                       lexed_line.push_back(Lexeme(lexemeType, ""));
                   }
@@ -52,11 +50,11 @@ namespace CircuitParsing {
   };
 
   bool Stage1Lexer::currentCharIsLexeme(string::iterator currentChar, LexemeType type) {
-      return Stage1LexemePool::isLexeme(type, *currentChar);
+      return pool.isLexeme(type, *currentChar);
   }
 
   bool Stage1Lexer::nextCharIsLexeme(string::iterator currentChar, LexemeType type) {
-      return Stage1LexemePool::isLexeme(type, *next(currentChar, 1));
+      return pool.isLexeme(type, *next(currentChar, 1));
   }
 
   string Stage1Lexer::removeComments(string line) {

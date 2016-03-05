@@ -25,6 +25,8 @@ namespace CircuitParsing {
 
       LexemeStream output;
   private:
+      Stage1LexemePool pool;
+
       LexemeStream lexLine(string line);
       string removeComments(string line);
       void addToOutput(LexemeStream toAdd);
