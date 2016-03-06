@@ -17,10 +17,17 @@ namespace CircuitParsing {
   using std::function;
 
   enum LexemeType {
+      // Stage 1
       IDENTIFYER,
       COLON,
       SEMICOLON,
-      COMMA
+      COMMA,
+      // Stage 2
+      NODE_IDENTIFYER,
+      IS_A, IS_CONNECTED_TO,
+      OR, AND, NOT, NOR, NAND, XOR,
+      INPUT_LOW, INPUT_HIGH,
+      PROBE
   };
 
   typedef function<bool(char)> LexemeTypeChecker;
