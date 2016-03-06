@@ -7,7 +7,7 @@
 
 #include <map>
 
-#include "Lexeme.hpp"
+#include "CircuitParsing/Lexeme.hpp"
 
 namespace CircuitParsing {
   using std::map;
