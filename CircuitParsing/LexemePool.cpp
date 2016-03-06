@@ -6,6 +6,8 @@
 
 namespace CircuitParsing {
 
+  map<LexemeType, string> KnownLexemeNames = {};
+
   LexemePool::LexemePool() {};
 
   LexemePool::~LexemePool() {};
@@ -16,10 +18,18 @@ namespace CircuitParsing {
 
   void LexemePool::addLexemeToPool(LexemeType type, LexemeTypeChecker typeChecker, bool isSingleChar, string name) {
       this->LexemeTypesCheckers[type] = typeChecker;
+
       this->LexemeNames[type] = name;
+      KnownLexemeNames[type] = name;
 
       if (isSingleChar) {
           this->SingleCharLexemes.push_back(type);
       }
+  }
+
+  std::ostream& operator<<(std::ostream& os, LexemeType type){
+      string foo = KnownLexemeNames[type];
+      os << foo;
+      return os;
   }
 }
