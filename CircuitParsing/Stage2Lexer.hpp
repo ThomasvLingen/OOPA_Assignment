@@ -9,6 +9,9 @@
 #include "CircuitParsing/Stage2LexemePool.hpp"
 
 namespace CircuitParsing {
+  using std::prev;
+  using std::next;
+
   class Stage2Lexer {
   public:
       Stage2Lexer(LexemeStream input);

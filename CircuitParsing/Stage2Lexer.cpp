@@ -54,8 +54,8 @@ namespace CircuitParsing {
   }
 
   void Stage2Lexer::transformColon(LexemeStream::iterator colon) {
-      LexemeStream::iterator nextLexeme = std::next(colon, 1);
-      LexemeStream::iterator previousLexeme = std::prev(colon, 1);
+      LexemeStream::iterator nextLexeme = next(colon, 1);
+      LexemeStream::iterator previousLexeme = prev(colon, 1);
 
       if (nextLexeme != this->output.end() && previousLexeme != this->output.end()) {
           if (this->isISA(*previousLexeme, *nextLexeme)) {
