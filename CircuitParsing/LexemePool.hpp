@@ -12,6 +12,7 @@
 namespace CircuitParsing {
   using std::map;
   using std::string;
+  using std::ostream;
 
   // This is to track all LexemeNames ever added to a pool. Therefore spans multiple pools!
   extern map<LexemeType, string> KnownLexemeNames;
@@ -31,7 +32,7 @@ namespace CircuitParsing {
       virtual void fillPool()=0;
   };
 
-  std::ostream& operator<<(std::ostream& os, LexemeType type);
+  ostream& operator<<(ostream& os, LexemeType type);
 }
 
 

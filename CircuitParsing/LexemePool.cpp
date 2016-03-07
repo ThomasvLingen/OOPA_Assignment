@@ -27,7 +27,7 @@ namespace CircuitParsing {
       }
   }
 
-  std::ostream& operator<<(std::ostream& os, LexemeType type){
+  ostream& operator<<(ostream& os, LexemeType type){
       string foo = KnownLexemeNames[type];
       os << foo;
       return os;
