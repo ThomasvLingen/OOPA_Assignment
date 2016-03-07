@@ -17,11 +17,18 @@ namespace CircuitParsing {
       LexemeStream output;
   private:
       Stage2LexemePool pool;
+
       void replaceIdentifyers();
+
       void setDescriptors();
       void setDescriptor(Lexeme& lexeme);
+
       void setNodeIdentifyers();
       void setNodeIdentifyer(Lexeme& lexeme);
+
+      void transformColon(LexemeStream::iterator);
+      bool isISA(Lexeme previous, Lexeme next);
+      bool isISConnectedTo(Lexeme previous, Lexeme next);
   };
 }
 

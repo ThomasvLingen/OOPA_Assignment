@@ -39,4 +39,9 @@ namespace CircuitParsing {
   bool Stage2LexemePool::isDescriptor(LexemeType type, string value) {
       return LexemeNames[type] == value;
   }
+
+  bool Stage2LexemePool::isDescriptor(LexemeType type) {
+      return find(this->descriptors.begin(), this->descriptors.end(), type) != this->descriptors.end();
+  };
+
 }
