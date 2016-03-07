@@ -10,7 +10,7 @@ set(SOURCE_FILES
     main.cpp
     CircuitParsing/Lexeme.hpp CircuitParsing/Lexeme.cpp
     CircuitParsing/Stage1Lexer.hpp CircuitParsing/Stage1Lexer.cpp
-    CircuitUtility/StrUtil.cpp CircuitUtility/StrUtil.hpp
+    CircuitUtility/StrUtil.hpp CircuitUtility/StrUtil.cpp
     CircuitParsing/Stage1LexemePool.hpp CircuitParsing/Stage1LexemePool.cpp
     CircuitParsing/LexemePool.hpp CircuitParsing/LexemePool.cpp
     CircuitParsing/Stage2Lexer.hpp CircuitParsing/Stage2Lexer.cpp
