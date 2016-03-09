@@ -16,18 +16,8 @@ int main() {
     FactoryTest::Gate* gate = FactoryTest::GateFactory::create("AND");
     FactoryTest::Gate* gate2 = FactoryTest::GateFactory::create("OR");
 
-    // Lex the input file
-    cout << "[Stage 1 lexing] START" << endl;
-    CircuitParsing::Stage1Lexer appels("/home/mafn/School/OOPatronen/Practicum/Assignment/circuit1.txt");
-    cout << "[Stage 1 lexing] END" << endl;
-    cout << "[Stage 2 lexing] START" << endl;
-    CircuitParsing::Stage2Lexer peren(appels.output);
-    cout << "[Stage 2 lexing] END" << endl;
-
-    // Print the results
-    for(CircuitParsing::Lexeme lexeme : peren.output) {
-        cout << "<" << lexeme.type << " value=" << lexeme.value << ">" << endl;
-    }
+    cout << gate->type << endl;
+    cout << gate2->type << endl;
 
     return 0;
 }

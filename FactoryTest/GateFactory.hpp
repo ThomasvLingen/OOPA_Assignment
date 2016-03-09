@@ -9,18 +9,18 @@
 #include <functional>
 #include <map>
 
-#include "Gate.hpp"
-
 namespace FactoryTest {
   using namespace std;
-
   class Gate;
 
-  static map<string, function<Gate*()>> gateMap = {};
+
+  typedef function<Gate*()> GateConstructor;
 
   class GateFactory {
   public:
-      static void assign(string name, function<Gate*()> constructor);
+      static map<string, GateConstructor> gateConstructorMap;
+
+      static void assign(string name, GateConstructor constructor);
       static Gate* create(string name);
   private:
   };
