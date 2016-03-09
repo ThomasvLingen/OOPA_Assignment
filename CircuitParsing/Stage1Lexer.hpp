@@ -9,8 +9,9 @@
 #include <iostream>
 #include <vector>
 
-#include "Lexeme.hpp"
-#include "../CircuitUtility/StrUtil.hpp"
+#include "CircuitParsing/Lexeme.hpp"
+#include "CircuitParsing/Stage1LexemePool.hpp"
+#include "CircuitUtility/StrUtil.hpp"
 
 namespace CircuitParsing {
   //TODO: use proper using directives instead of pulling in the entirety of std
@@ -24,9 +25,13 @@ namespace CircuitParsing {
 
       LexemeStream output;
   private:
+      Stage1LexemePool pool;
+
       LexemeStream lexLine(string line);
       string removeComments(string line);
       void addToOutput(LexemeStream toAdd);
+      bool currentCharIsLexeme(string::iterator currentChar, LexemeType type);
+      bool nextCharIsLexeme(string::iterator currentChar, LexemeType type);
   };
 }
 

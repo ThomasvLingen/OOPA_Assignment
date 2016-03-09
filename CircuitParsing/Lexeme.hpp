@@ -14,52 +14,36 @@
 namespace CircuitParsing {
   using std::string;
   using std::vector;
-  using std::map;
+  using std::function;
 
   enum LexemeType {
+      // Stage 1
       IDENTIFYER,
       COLON,
       SEMICOLON,
-      COMMA
+      COMMA,
+      // Stage 2
+      NODE_IDENTIFYER,
+      IS_A, IS_CONNECTED_TO,
+      OR, AND, NOT, NOR, NAND, XOR,
+      INPUT_LOW, INPUT_HIGH,
+      PROBE
   };
 
-  static map<LexemeType, std::function<bool(char)>> LexemeTypesCheckers = {
-      {LexemeType::COLON,
-          [](char character) {
-              return character == ':';
-          }
-      },
-      {LexemeType::SEMICOLON,
-          [](char character) {
-              return character == ';';
-          }
-      },
-      {LexemeType::COMMA,
-          [](char character) {
-              return character == ',';
-          }
-      },
-      {LexemeType::IDENTIFYER,
-          [](char character) {
-              return isalpha(character) || isdigit(character) || character == '_';
-          }
-      }
-  };
+  typedef function<bool(char)> LexemeTypeChecker;
 
   class Lexeme {
   public:
-
+      Lexeme();
       Lexeme(LexemeType type, string value);
       virtual ~Lexeme();
 
       LexemeType type;
       string value;
-
-      static bool isLexeme(LexemeType lexemeType, char character);
+  private:
   };
 
   typedef vector<Lexeme> LexemeStream;
-  std::ostream& operator<<(std::ostream& os, LexemeType type);
 }
 
 #endif //OOPA_CIRCUITLEXEME_HPP

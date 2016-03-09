@@ -11,8 +11,8 @@
 #include <cctype>
 
 namespace CircuitUtility {
-  //TODO: use proper using directives instead of pulling in the entirety of std
-  using namespace std;
+  using std::string;
+  using std::vector;
 
   class StrUtil {
   public:

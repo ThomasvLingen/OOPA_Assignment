@@ -6,22 +6,22 @@
 
 namespace CircuitUtility {
   vector<string> StrUtil::split(string str, char delim) {
-      string tmp = str;
+      string copy = str;
       vector<string> tokens;
 
       size_t delimPosition = 0;
 
-      while(tmp.find(delim) != string::npos || delimPosition != string::npos){
-          delimPosition = tmp.find(delim);
+      while(copy.find(delim) != string::npos || delimPosition != string::npos){
+          delimPosition = copy.find(delim);
 
-          string token = tmp.substr(0, delimPosition);
+          string token = copy.substr(0, delimPosition);
           // Check if the token isn't empty, if not, push it!
           if(!token.empty()){
               tokens.push_back(token);
           }
 
-          // Remove added token from our string
-          tmp = tmp.substr(delimPosition + 1);
+          // Substract added token from our string
+          copy = copy.substr(delimPosition + 1);
       }
 
       return tokens;
