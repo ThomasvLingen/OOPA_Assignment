@@ -9,6 +9,7 @@ namespace CircuitParsing {
       this->output = input;
 
       this->replaceIdentifyers();
+      this->transformColons();
   }
 
   Stage2Lexer::~Stage2Lexer() {};
@@ -16,12 +17,6 @@ namespace CircuitParsing {
   void Stage2Lexer::replaceIdentifyers() {
       this->setDescriptors();
       this->setNodeIdentifyers();
-
-      for(LexemeStream::iterator it = this->output.begin(); it != this->output.end(); it++) {
-          if((*it).type == LexemeType::COLON) {
-              this->transformColon(it);
-          }
-      }
   }
 
   void Stage2Lexer::setDescriptors() {
@@ -51,6 +46,14 @@ namespace CircuitParsing {
 
   void Stage2Lexer::setNodeIdentifyer(Lexeme &lexeme) {
       lexeme = Lexeme(LexemeType::NODE_IDENTIFYER, lexeme.value);
+  }
+
+  void Stage2Lexer::transformColons() {
+      for(LexemeStream::iterator it = this->output.begin(); it != this->output.end(); it++) {
+          if((*it).type == LexemeType::COLON) {
+              this->transformColon(it);
+          }
+      }
   }
 
   void Stage2Lexer::transformColon(LexemeStream::iterator colon) {

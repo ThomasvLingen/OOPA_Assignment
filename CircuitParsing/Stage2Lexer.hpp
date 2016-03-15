@@ -30,6 +30,7 @@ namespace CircuitParsing {
       void setNodeIdentifyer(Lexeme& lexeme);
 
       void transformColon(LexemeStream::iterator);
+      void transformColons();
       bool isISA(Lexeme previous, Lexeme next);
       bool isISConnectedTo(Lexeme previous, Lexeme next);
   };
