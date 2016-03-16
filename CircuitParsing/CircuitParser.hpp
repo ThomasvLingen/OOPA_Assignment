@@ -15,6 +15,8 @@ namespace CircuitParsing {
   using std::function;
   using std::next;
   using std::prev;
+  using std::mem_fn;
+  using std::bind;
 
   class CircuitParser {
   public:
@@ -29,6 +31,8 @@ namespace CircuitParsing {
       void parse_IS_CONNECTED_TO(LexemeStream line);
 
       Lexeme& getLineOperator(LexemeStream line);
+      typedef function<void(LexemeStream)> ParseFunction;
+      ParseFunction getParseFunction(LexemeType operatorType);
 
       vector<LexemeStream> splitInputToLines(LexemeStream input);
   };

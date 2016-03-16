@@ -22,11 +22,16 @@ namespace CircuitParsing {
   void CircuitParser::parseLine(LexemeStream line) {
       Lexeme lineOperator = this->getLineOperator(line);
 
-      if(lineOperator.type == LexemeType::IS_A) {
-          this->parse_IS_A(line);
-      } else if(lineOperator.type == LexemeType::IS_CONNECTED_TO) {
-          this->parse_IS_CONNECTED_TO(line);
-      }
+      this->getParseFunction(lineOperator.type)(line);
+  }
+
+  CircuitParser::ParseFunction CircuitParser::getParseFunction(LexemeType operatorType) {
+      map<LexemeType, ParseFunction> bar = {
+              {LexemeType::IS_A, bind(mem_fn(&CircuitParser::parse_IS_A), this, std::placeholders::_1)},
+              {LexemeType::IS_CONNECTED_TO, bind(mem_fn(&CircuitParser::parse_IS_CONNECTED_TO), this, std::placeholders::_1)}
+      };
+
+      return bar[operatorType];
   }
 
   void CircuitParser::parse_IS_A(LexemeStream line) {
