@@ -27,8 +27,18 @@ int main() {
     }
 
     cout << "Parsing results:" << endl;
+    cout << "Nodes: " << endl;
     for(CircuitParsing::InputFileNode node : bananen.output.nodes) {
         cout << node.type << " named " << node.name << endl;
+    }
+
+    cout << "Edges: " << endl;
+    for(map<CircuitParsing::InputFileNode*, vector<CircuitParsing::InputFileNode*>>::iterator it = bananen.output.edges.begin(); it != bananen.output.edges.end(); it++) {
+        cout << (*it).first->name << " has edges:" << endl;
+        for(CircuitParsing::InputFileNode* edgeNode: (*it).second) {
+            cout << "    " << edgeNode->name << endl;
+        }
+        cout << endl;
     }
 
     return 0;

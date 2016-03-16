@@ -10,6 +10,7 @@
 #include "CircuitParsing/Lexeme.hpp"
 #include "CircuitParsing/InputFileData.hpp"
 #include "Circuit/NodeTypes.hpp"
+#include "CircuitParsing/ParsingExceptions.hpp"
 
 namespace CircuitParsing {
   using std::function;
@@ -29,6 +30,8 @@ namespace CircuitParsing {
       void parseLine(LexemeStream line);
       void parse_IS_A(LexemeStream line);
       void parse_IS_CONNECTED_TO(LexemeStream line);
+
+      InputFileNodeStream getInputFileNodeEdges(LexemeStream edges);
 
       Lexeme& getLineOperator(LexemeStream line);
       typedef function<void(LexemeStream)> ParseFunction;

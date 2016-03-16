@@ -47,8 +47,47 @@ namespace CircuitParsing {
       }
   }
 
-  // TODO: actually implement this
-  void CircuitParser::parse_IS_CONNECTED_TO(LexemeStream line) {};
+  void CircuitParser::parse_IS_CONNECTED_TO(LexemeStream line) {
+      for(LexemeStream::iterator it=line.begin(); it != line.end(); it++) {
+          if ((*it).type == LexemeType::IS_CONNECTED_TO) {
+              Lexeme origin = *(prev(it, 1));
+              InputFileNode* originNode = this->output.getNode(origin.value);
+
+              if (originNode) {
+                  this->output.edges[originNode] = this->getInputFileNodeEdges(LexemeStream(it+1, line.end()));
+              } else {
+                  throw InputFileEdgeUnknownNodeException();
+              }
+          }
+      }
+  };
+
+  InputFileNodeStream CircuitParser::getInputFileNodeEdges(LexemeStream edges) {
+      InputFileNodeStream nodeStream;
+      LexemeType currentExpectedType = LexemeType::NODE_IDENTIFYER;
+
+      for(LexemeStream::iterator it_lexeme = edges.begin(); it_lexeme != edges.end(); it_lexeme++) {
+          if ((*it_lexeme).type == currentExpectedType) {
+              if (currentExpectedType == LexemeType::NODE_IDENTIFYER) {
+                  InputFileNode* currentNode = this->output.getNode((*it_lexeme).value);
+
+                  if (currentNode) {
+                      nodeStream.push_back(currentNode);
+                  } else {
+                      throw InputFileEdgeUnknownNodeException();
+                  }
+
+                  currentExpectedType = LexemeType::COMMA;
+              } else if (currentExpectedType == LexemeType::COMMA) {
+                  currentExpectedType = LexemeType::NODE_IDENTIFYER;
+              }
+          } else {
+              throw InputFileEdgeSyntaxError();
+          }
+      }
+
+      return nodeStream;
+  }
 
   Lexeme& CircuitParser::getLineOperator(LexemeStream line) {
       for(Lexeme& lexeme : line) {

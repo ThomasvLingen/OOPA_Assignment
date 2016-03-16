@@ -21,8 +21,11 @@ namespace CircuitParsing {
       virtual ~InputFileData();
 
       vector<InputFileNode> nodes;
-      map<string, vector<InputFileNode>> edges;
+      map<InputFileNode*, vector<InputFileNode*>> edges;
+      InputFileNode* getNode(string name);
   };
+
+  typedef vector<InputFileNode*> InputFileNodeStream;
 }
 
 
