@@ -5,6 +5,8 @@
 #include "OrGate.hpp"
 
 namespace FactoryTest {
+  OrGate OrGate::m_OrGate("OR");
+
   // Assigns the gate to the factory
   OrGate::OrGate(string type) : Gate(type) {
       GateFactory::assign(type, orConstructor);

@@ -5,6 +5,8 @@
 #include "AndGate.hpp"
 
 namespace FactoryTest {
+  AndGate AndGate::m_AndGate("AND");
+
   // Assigns the gate to the factory
   AndGate::AndGate(string type) : Gate(type) {
       GateFactory::assign(type, andConstructor);

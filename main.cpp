@@ -10,9 +10,6 @@
 using namespace std;
 
 int main() {
-    FactoryTest::AndGate("AND");
-    FactoryTest::OrGate("OR");
-
     FactoryTest::Gate* gate = FactoryTest::GateFactory::create("AND");
     FactoryTest::Gate* gate2 = FactoryTest::GateFactory::create("OR");
 

@@ -13,6 +13,8 @@ namespace FactoryTest {
       OrGate(string type);
       OrGate();
       ~OrGate();
+  private:
+      static OrGate m_OrGate;
   };
 
   OrGate* orConstructor();
