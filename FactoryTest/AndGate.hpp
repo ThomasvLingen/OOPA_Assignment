@@ -15,11 +15,10 @@ namespace FactoryTest {
       AndGate(string type);
       AndGate();
       ~AndGate();
-  private:
-      static AndGate m_AndGate;
   };
 
   AndGate* andConstructor();
+  extern AndGate Assign_AndGate;
 }
 
 
