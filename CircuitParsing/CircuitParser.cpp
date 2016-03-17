@@ -20,9 +20,13 @@ namespace CircuitParsing {
   }
 
   void CircuitParser::parseLine(LexemeStream line) {
-      Lexeme lineOperator = this->getLineOperator(line);
+      Lexeme* lineOperator = this->getLineOperator(line);
 
-      this->getParseFunction(lineOperator.type)(line);
+      if (lineOperator) {
+          this->getParseFunction(lineOperator->type)(line);
+      } else {
+          throw InputFileUnrecognisedStatementException();
+      }
   }
 
   CircuitParser::ParseFunction CircuitParser::getParseFunction(LexemeType operatorType) {
@@ -89,12 +93,14 @@ namespace CircuitParsing {
       return nodeStream;
   }
 
-  Lexeme& CircuitParser::getLineOperator(LexemeStream line) {
+  Lexeme* CircuitParser::getLineOperator(LexemeStream line) {
       for(Lexeme& lexeme : line) {
          if(lexeme.type == LexemeType::IS_A || lexeme.type == LexemeType::IS_CONNECTED_TO) {
-             return lexeme;
+             return &lexeme;
          }
       }
+
+      return nullptr;
   }
 
   vector<LexemeStream> CircuitParser::splitInputToLines(LexemeStream input) {

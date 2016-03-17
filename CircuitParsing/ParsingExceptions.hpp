@@ -22,6 +22,12 @@ namespace CircuitParsing {
           return "In an edge description, there was a syntax error. Edge description syntax should be: [NODE]:[NODE],[NODE]...";
       }
   };
+
+  class InputFileUnrecognisedStatementException : public exception {
+      virtual const char* what() const throw() {
+          return "There is an unrecognised statement in the input file, which isn't either a node description or edge description";
+      }
+  };
 }
 
 #endif //OOPA_CIRCUITSIM_PARSINGEXCEPTIONS_HPP

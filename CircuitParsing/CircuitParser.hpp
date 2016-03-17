@@ -33,7 +33,7 @@ namespace CircuitParsing {
 
       InputFileNodeStream getInputFileNodeEdges(LexemeStream edges);
 
-      Lexeme& getLineOperator(LexemeStream line);
+      Lexeme* getLineOperator(LexemeStream line);
       typedef function<void(LexemeStream)> ParseFunction;
       ParseFunction getParseFunction(LexemeType operatorType);
 
