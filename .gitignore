@@ -1,2 +1,5 @@
 # Ignore CLion IDE stuff
 .idea/
+Stage1.txt
+Stage2.txt
+Parsing.txt
