@@ -4,6 +4,8 @@
 
 #include "Circuit/NodeTypes.hpp"
 
+// TODO: This entire file is dumb and should be refactored.
+
 namespace Circuit {
   // TODO: there has to be a cleaner way to do this instead of straight up harcoding it...
   map<CircuitParsing::LexemeType, nodeType> lexemeTypeToNodeTypeMap = {
@@ -18,8 +20,26 @@ namespace Circuit {
           {CircuitParsing::LexemeType::PROBE, nodeType::PROBE},
   };
 
+  map<nodeType, string> nodeTypeNames = {
+          {nodeType::AND, "AND"},
+          {nodeType::INPUT_HIGH, "INPUT_HIGH"},
+          {nodeType::INPUT_LOW, "INPUT_LOW"},
+          {nodeType::NAND, "NAND"},
+          {nodeType::NOR, "NOR"},
+          {nodeType::NOT, "NOT"},
+          {nodeType::OR, "OR"},
+          {nodeType::PROBE, "PROBE"},
+          {nodeType::XOR, "XOR"}
+  };
+
   // TODO: This should also be extracted to a clean LexemeUtils / ParseUtils class
   nodeType lexemeTypeToNodeType(CircuitParsing::LexemeType lexemetype) {
       return lexemeTypeToNodeTypeMap[lexemetype];
+  }
+
+  ostream& operator<<(ostream& os, nodeType type){
+    string foo = nodeTypeNames[type];
+    os << foo;
+    return os;
   }
 }

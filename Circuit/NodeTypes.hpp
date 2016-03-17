@@ -6,11 +6,15 @@
 #define OOPA_CIRCUITSIM_NODETYPES_HPP
 
 #include <map>
+#include <string>
+#include <ostream>
 
 #include "CircuitParsing/Lexeme.hpp"
 
 namespace Circuit {
   using std::map;
+  using std::string;
+  using std::ostream;
 
   enum nodeType {
       OR, AND, NOT,
@@ -20,8 +24,11 @@ namespace Circuit {
   };
 
   extern map<CircuitParsing::LexemeType, nodeType> lexemeTypeToNodeTypeMap;
+  extern map<nodeType, string> nodeTypeNames;
 
   nodeType lexemeTypeToNodeType(CircuitParsing::LexemeType);
+
+  ostream& operator<<(ostream& os, nodeType type);
 }
 
 #endif //OOPA_CIRCUITSIM_NODETYPES_HPP
