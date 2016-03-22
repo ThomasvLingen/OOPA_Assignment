@@ -15,6 +15,12 @@ set(SOURCE_FILES
     CircuitParsing/LexemePool.hpp CircuitParsing/LexemePool.cpp
     CircuitParsing/Stage2Lexer.hpp CircuitParsing/Stage2Lexer.cpp
     CircuitParsing/Stage2LexemePool.hpp CircuitParsing/Stage2LexemePool.cpp
+    CircuitParsing/InputFileNode.hpp CircuitParsing/InputFileNode.cpp
+    CircuitParsing/InputFileData.hpp CircuitParsing/InputFileData.cpp
+    CircuitParsing/CircuitParser.hpp CircuitParsing/CircuitParser.cpp
+    Circuit/NodeTypes.hpp Circuit/NodeTypes.cpp
+    Circuit/Observed.hpp Circuit/Observed.cpp
+    Circuit/Observer.hpp Circuit/Observer.cpp
     FactoryTest/GateFactory.hpp FactoryTest/GateFactory.cpp
     FactoryTest/Gate.hpp FactoryTest/Gate.cpp
     FactoryTest/AndGate.hpp FactoryTest/AndGate.cpp
