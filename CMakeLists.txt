@@ -19,6 +19,8 @@ set(SOURCE_FILES
     CircuitParsing/InputFileData.hpp CircuitParsing/InputFileData.cpp
     CircuitParsing/CircuitParser.hpp CircuitParsing/CircuitParser.cpp
     Circuit/NodeTypes.hpp Circuit/NodeTypes.cpp
+    Circuit/Observed.hpp Circuit/Observed.cpp
+    Circuit/Observer.hpp Circuit/Observer.cpp
 )
 
 add_executable(OOPA_CircuitSim ${SOURCE_FILES})
