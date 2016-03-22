@@ -3,8 +3,28 @@
 #include "CircuitParsing/Stage2Lexer.hpp"
 #include "CircuitParsing/CircuitParser.hpp"
 #include "CircuitParsing/InputFileNode.hpp"
+#include "Circuit/Observed.hpp"
+#include "Circuit/Observer.hpp"
 
 using namespace std;
+
+class testObserved : public Circuit::Observed {
+public:
+    testObserved(){};
+    ~testObserved(){};
+    void yoink(){
+        this->notifyObservers();
+    };
+};
+
+class testObserver : public Circuit::Observer {
+public:
+    testObserver(){};
+    ~testObserver(){};
+    virtual void update() {
+        cout << "yoink from observer" << endl;
+    }
+};
 
 int main() {
     // Lex the input file
@@ -20,26 +40,12 @@ int main() {
     CircuitParsing::CircuitParser bananen(peren.output);
     cout << "[Stage 1 parsing] END" << endl;
 
-    // Print the results
-    cout << "Lexing results:" << endl;
-    for(CircuitParsing::Lexeme lexeme : peren.output) {
-        cout << "<" << lexeme.type << " value=" << lexeme.value << ">" << endl;
-    }
+    testObserved yoinker;
+    testObserver obs;
 
-    cout << "Parsing results:" << endl;
-    cout << "Nodes: " << endl;
-    for(CircuitParsing::InputFileNode node : bananen.output.nodes) {
-        cout << node.type << " named " << node.name << endl;
-    }
+    obs.observe(yoinker);
 
-    cout << "Edges: " << endl;
-    for(map<CircuitParsing::InputFileNode*, vector<CircuitParsing::InputFileNode*>>::iterator it = bananen.output.edges.begin(); it != bananen.output.edges.end(); it++) {
-        cout << (*it).first->name << " has edges:" << endl;
-        for(CircuitParsing::InputFileNode* edgeNode: (*it).second) {
-            cout << "    " << edgeNode->name << endl;
-        }
-        cout << endl;
-    }
+    yoinker.yoink();
 
     return 0;
 }

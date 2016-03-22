@@ -12,7 +12,7 @@ namespace Circuit {
 
   class Observer {
   public:
-      void observe(Observed target);
+      void observe(Observed& target);
       virtual void update()=0;
   private:
   };

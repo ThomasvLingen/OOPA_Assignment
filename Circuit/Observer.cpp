@@ -5,7 +5,7 @@
 #include "Observer.hpp"
 
 namespace Circuit {
-  void Observer::observe(Observed target) {
+  void Observer::observe(Observed& target) {
       target.attachObserver(this);
   }
 }
