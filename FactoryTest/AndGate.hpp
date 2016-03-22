@@ -8,6 +8,7 @@
 #include "Gate.hpp"
 
 #include "GateFactory.hpp"
+#include "CircuitUtility/Constructor.hpp"
 
 namespace FactoryTest {
   class AndGate : public Gate {
@@ -17,7 +18,6 @@ namespace FactoryTest {
       ~AndGate();
   };
 
-  AndGate* andConstructor();
   extern AndGate Assign_AndGate;
 }
 

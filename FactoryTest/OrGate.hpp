@@ -6,6 +6,7 @@
 #define OOPA_CIRCUITSIM_ORGATE_HPP
 
 #include "Gate.hpp"
+#include "CircuitUtility/Constructor.hpp"
 
 namespace FactoryTest {
   class OrGate : public Gate {
@@ -15,7 +16,6 @@ namespace FactoryTest {
       ~OrGate();
   };
 
-  OrGate* orConstructor();
   extern OrGate Assign_OrGate;
 }
 

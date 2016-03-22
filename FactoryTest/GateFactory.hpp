@@ -15,13 +15,13 @@ namespace FactoryTest {
 
 
   typedef function<Gate*()> GateConstructor;
+  typedef map<string, GateConstructor> GateConstructorMap;
 
   class GateFactory {
   public:
-      static map<string, GateConstructor> gateConstructorMap;
-
       static void assign(string name, GateConstructor constructor);
       static Gate* create(string name);
+      static GateConstructorMap& getGateConstructorMap();
   private:
   };
 }

@@ -9,7 +9,7 @@ namespace FactoryTest {
 
   // Assigns the gate to the factory
   OrGate::OrGate(string type) : Gate(type) {
-      GateFactory::assign(type, orConstructor);
+      GateFactory::assign(type, CircuitUtility::Constructor<OrGate>);
   }
 
   OrGate::OrGate() : Gate() {
