@@ -2,32 +2,10 @@
 #include "CircuitParsing/Stage1Lexer.hpp"
 #include "CircuitParsing/Stage2Lexer.hpp"
 #include "CircuitParsing/CircuitParser.hpp"
-#include "CircuitParsing/InputFileNode.hpp"
-#include "Circuit/Observed.hpp"
-#include "Circuit/Observer.hpp"
-#include "FactoryTest/GateFactory.hpp"
-#include "FactoryTest/AndGate.hpp"
-#include "FactoryTest/OrGate.hpp"
+#include "Circuit/Nodes/AndGate.hpp"
+#include "Circuit/Nodes/InputHigh.hpp"
 
 using namespace std;
-
-class testObserved : public Circuit::Observed {
-public:
-    testObserved(){};
-    ~testObserved(){};
-    void yoink(){
-        this->notifyObservers();
-    };
-};
-
-class testObserver : public Circuit::Observer {
-public:
-    testObserver(){};
-    ~testObserver(){};
-    virtual void update() {
-        cout << "yoink from observer" << endl;
-    }
-};
 
 int main() {
     // Lex the input file
@@ -43,18 +21,31 @@ int main() {
     CircuitParsing::CircuitParser bananen(peren.output);
     cout << "[Stage 1 parsing] END" << endl;
 
-    testObserved yoinker;
-    testObserver obs;
+    Circuit::AndGate i_gate1("Input AND 1");
+    Circuit::AndGate i_gate2("Input AND 2");
+    Circuit::AndGate top_gate("top AND");
 
-    obs.observe(yoinker);
+    Circuit::InputHigh i1("input 1");
+    Circuit::InputHigh i2("input 2");
+    Circuit::InputHigh i3("input 3");
+    Circuit::InputHigh i4("input 4");
 
-    yoinker.yoink();
+    i_gate1.addEdge(&i1);
+    i_gate1.addEdge(&i2);
+    i_gate2.addEdge(&i3);
+    i_gate2.addEdge(&i4);
+    top_gate.addEdge(&i_gate1);
+    top_gate.addEdge(&i_gate2);
 
-    FactoryTest::Gate* gate = FactoryTest::GateFactory::create("AND");
-    FactoryTest::Gate* gate2 = FactoryTest::GateFactory::create("OR");
+    cout << top_gate.output << " " << top_gate.evaluated << endl;
 
-    cout << gate->type << endl;
-    cout << gate2->type << endl;
+    i1.evaluate();
+    i2.evaluate();
+    i3.evaluate();
+    i4.evaluate();
+
+
+    cout << top_gate.output << " " << top_gate.evaluated << endl;
 
     return 0;
 }
