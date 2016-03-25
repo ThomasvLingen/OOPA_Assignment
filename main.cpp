@@ -2,10 +2,13 @@
 #include "CircuitParsing/Stage1Lexer.hpp"
 #include "CircuitParsing/Stage2Lexer.hpp"
 #include "CircuitParsing/CircuitParser.hpp"
-#include "Circuit/Nodes/AndGate.hpp"
-#include "Circuit/Nodes/InputHigh.hpp"
+#include "Circuit/NodeFactory.hpp"
+#include "Circuit/Nodes/Node.hpp"
+#include "Circuit/NodeTypes.hpp"
 
 using namespace std;
+using Circuit::NodeFactory;
+using Circuit::nodeType;
 
 int main() {
     // Lex the input file
@@ -21,31 +24,30 @@ int main() {
     CircuitParsing::CircuitParser bananen(peren.output);
     cout << "[Stage 1 parsing] END" << endl;
 
-    Circuit::AndGate i_gate1("Input AND 1");
-    Circuit::AndGate i_gate2("Input AND 2");
-    Circuit::AndGate top_gate("top AND");
+    Circuit::Node* i_gate1  = NodeFactory::create(nodeType::AND, "Input AND 1");
+    Circuit::Node* i_gate2  = NodeFactory::create(nodeType::AND, "Input AND 2");
+    Circuit::Node* top_gate = NodeFactory::create(nodeType::AND, "Top AND");
 
-    Circuit::InputHigh i1("input 1");
-    Circuit::InputHigh i2("input 2");
-    Circuit::InputHigh i3("input 3");
-    Circuit::InputHigh i4("input 4");
+    Circuit::Node* i1       = NodeFactory::create(nodeType::INPUT_HIGH, "input 1");
+    Circuit::Node* i2       = NodeFactory::create(nodeType::INPUT_HIGH, "input 2");
+    Circuit::Node* i3       = NodeFactory::create(nodeType::INPUT_HIGH, "input 3");
+    Circuit::Node* i4       = NodeFactory::create(nodeType::INPUT_HIGH, "input 4");
 
-    i_gate1.addEdge(&i1);
-    i_gate1.addEdge(&i2);
-    i_gate2.addEdge(&i3);
-    i_gate2.addEdge(&i4);
-    top_gate.addEdge(&i_gate1);
-    top_gate.addEdge(&i_gate2);
+    i_gate1->addEdge(i1);
+    i_gate1->addEdge(i2);
+    i_gate2->addEdge(i3);
+    i_gate2->addEdge(i4);
+    top_gate->addEdge(i_gate1);
+    top_gate->addEdge(i_gate2);
 
-    cout << top_gate.output << " " << top_gate.evaluated << endl;
+    cout << top_gate->output << " " << top_gate->evaluated << endl;
 
-    i1.evaluate();
-    i2.evaluate();
-    i3.evaluate();
-    i4.evaluate();
+    i1->evaluate();
+    i2->evaluate();
+    i3->evaluate();
+    i4->evaluate();
 
-
-    cout << top_gate.output << " " << top_gate.evaluated << endl;
+    cout << top_gate->output << " " << top_gate->evaluated << endl;
 
     return 0;
 }

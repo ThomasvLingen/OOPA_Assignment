@@ -5,8 +5,16 @@
 #include "AndGate.hpp"
 
 namespace Circuit {
-  AndGate::AndGate(string name)
-                   : Node(name) {}
+  AndGate Assign_AndGate(nodeType::AND);
+
+  AndGate::AndGate(string name) : Node(name) {}
+
+  AndGate::AndGate(int id) : Node("") {
+      NodeFactory::assign(
+          id,
+          CircuitUtility::Constructor<AndGate, string>
+      );
+  }
 
   AndGate::~AndGate() {}
 

@@ -7,7 +7,10 @@
 
 #include <string>
 
+#include "Circuit/NodeFactory.hpp"
+#include "Circuit/NodeTypes.hpp"
 #include "Circuit/Nodes/Node.hpp"
+#include "CircuitUtility/Constructor.hpp"
 
 namespace Circuit {
   using std::string;
@@ -15,6 +18,7 @@ namespace Circuit {
   class InputHigh : public Node {
   public:
       InputHigh(string name);
+      InputHigh(int id);
       ~InputHigh();
 
       virtual bool evaluateOutput();
@@ -22,6 +26,8 @@ namespace Circuit {
       virtual void evaluate();
   private:
   };
+
+  extern InputHigh Assign_InputHigh;
 }
 
 

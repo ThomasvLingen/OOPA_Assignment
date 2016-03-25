@@ -5,8 +5,16 @@
 #include "InputHigh.hpp"
 
 namespace Circuit {
-  InputHigh::InputHigh(string name)
-                       : Node(name) {}
+  InputHigh Assign_InputHigh(nodeType::INPUT_HIGH);
+
+  InputHigh::InputHigh(string name) : Node(name) {}
+
+  InputHigh::InputHigh(int id) : Node(""){
+      NodeFactory::assign(
+          id,
+          CircuitUtility::Constructor<InputHigh, string>
+      );
+  }
 
   InputHigh::~InputHigh() {};
 

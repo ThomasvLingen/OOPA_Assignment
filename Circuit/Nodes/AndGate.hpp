@@ -7,7 +7,11 @@
 
 #include <string>
 
+#include "Circuit/NodeFactory.hpp"
+#include "Circuit/NodeTypes.hpp"
 #include "Circuit/Nodes/Node.hpp"
+#include "CircuitUtility/Constructor.hpp"
+
 
 namespace Circuit {
   using std::string;
@@ -15,11 +19,13 @@ namespace Circuit {
   class AndGate : public Node {
   public:
       AndGate(string name);
+      AndGate(int id);
       ~AndGate();
 
       virtual bool evaluateOutput();
-  private:
   };
+
+  extern AndGate Assign_AndGate;
 }
 
 

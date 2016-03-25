@@ -6,9 +6,9 @@
 #define OOPA_CIRCUITSIM_CONSTRUCTOR_HPP
 
 namespace CircuitUtility {
-  template<class T>
-  T* Constructor() {
-      return new T();
+  template<class T, typename... Args>
+  T* Constructor(Args... args) {
+      return new T(args...);
   }
 }
 

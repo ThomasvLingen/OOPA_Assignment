@@ -28,6 +28,7 @@ set(SOURCE_FILES
     Circuit/Nodes/Node.hpp Circuit/Nodes/Node.cpp
     Circuit/Nodes/AndGate.hpp Circuit/Nodes/AndGate.cpp
     Circuit/Nodes/InputHigh.hpp Circuit/Nodes/InputHigh.cpp
+    Circuit/NodeFactory.hpp Circuit/NodeFactory.cpp
 )
 
 add_executable(OOPA_CircuitSim ${SOURCE_FILES})
