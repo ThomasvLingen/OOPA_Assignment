@@ -13,18 +13,22 @@ namespace Circuit {
   }
 
   void Node::evaluate() {
-      if (!this->inputEdges[0] || !this->inputEdges[1]) {
-          cout << "Warning: a node has been issued to evaluate when it doesn't have 2 intputEdges" << endl;
-          return;
-      }
-
-      if (this->inputEdges[0]->evaluated && this->inputEdges[1]->evaluated) {
+      if (this->canEvaluate()) {
           this->output = this->evaluateOutput();
           this->evaluated = true;
 
           this->notifyObservers();
       } else {
-          cout << "Warning: a node has been issued to evaluate when his inputs aren't evaluated" << endl;
+          cout << "Warning: a node has been issued to evaluate when it cannot (no input nodes / input nodes not evaled)" << endl;
+      }
+  }
+
+  bool Node::canEvaluate() {
+      // This has to be specifically checked first, to prevent us from checking a non-existant value
+      if (this->inputEdges[0] && this->inputEdges[1]) {
+          return this->inputEdges[0]->evaluated && this->inputEdges[1]->evaluated;
+      } else {
+          return false;
       }
   }
 

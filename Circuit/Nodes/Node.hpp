@@ -28,6 +28,7 @@ namespace Circuit {
       bool evaluated;
       string name;
 
+      bool canEvaluate();
       virtual bool evaluateOutput()=0;
       virtual void evaluate();
       virtual void update();
