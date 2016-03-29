@@ -9,7 +9,7 @@ namespace Circuit {
 
   InputHigh::InputHigh(string name) : Node(name) {}
 
-  InputHigh::InputHigh(int id) : Node(""){
+  InputHigh::InputHigh(int id) : Node(){
       NodeFactory::assign(
           id,
           CircuitUtility::Constructor<InputHigh, string>

@@ -21,7 +21,7 @@ namespace Circuit {
 
   class Node : public Observer, public Observed {
   public:
-      Node(string name);
+      Node(string name="DEFAULT_NAME");
 
       vector<Node*> inputEdges;
       bool output;
