@@ -18,8 +18,6 @@ namespace Circuit {
           this->evaluated = true;
 
           this->notifyObservers();
-      } else {
-          cout << "Warning: a node has been issued to evaluate when it cannot (no input nodes / input nodes not evaled)" << endl;
       }
   }
 

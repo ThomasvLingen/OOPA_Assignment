@@ -41,12 +41,13 @@ int main() {
     top_gate->addEdge(i_gate2);
 
     cout << top_gate->output << " " << top_gate->evaluated << endl;
-
     i1->evaluate();
+    cout << top_gate->output << " " << top_gate->evaluated << endl;
     i2->evaluate();
+    cout << top_gate->output << " " << top_gate->evaluated << endl;
     i3->evaluate();
+    cout << top_gate->output << " " << top_gate->evaluated << endl;
     i4->evaluate();
-
     cout << top_gate->output << " " << top_gate->evaluated << endl;
 
     return 0;
