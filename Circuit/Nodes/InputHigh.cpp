@@ -22,10 +22,7 @@ namespace Circuit {
       return true;
   }
 
-  void InputHigh::evaluate() {
-      this->output = this->evaluateOutput();
-      this->evaluated = true;
-
-      this->notifyObservers();
+  bool InputHigh::canEvaluate() {
+      return true;
   }
 }

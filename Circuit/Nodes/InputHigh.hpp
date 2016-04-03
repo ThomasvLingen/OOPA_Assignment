@@ -23,7 +23,7 @@ namespace Circuit {
 
       virtual bool evaluateOutput();
       // This gets overridden since it should be able to evaluate without and inputEdges!
-      virtual void evaluate();
+      virtual bool canEvaluate();
   private:
   };
 

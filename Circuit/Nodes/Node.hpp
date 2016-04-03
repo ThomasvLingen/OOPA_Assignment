@@ -28,10 +28,10 @@ namespace Circuit {
       bool evaluated;
       string name;
 
-      bool canEvaluate();
+      virtual bool canEvaluate();
       virtual bool evaluateOutput()=0;
-      virtual void evaluate();
       virtual void update();
+      void evaluate();
 
       void addEdge(Node* toAdd);
   private:
