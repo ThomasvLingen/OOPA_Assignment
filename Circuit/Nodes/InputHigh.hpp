@@ -9,21 +9,19 @@
 
 #include "Circuit/NodeFactory.hpp"
 #include "Circuit/NodeTypes.hpp"
-#include "Circuit/Nodes/Node.hpp"
+#include "Circuit/Nodes/Input.hpp"
 #include "CircuitUtility/Constructor.hpp"
 
 namespace Circuit {
   using std::string;
 
-  class InputHigh : public Node {
+  class InputHigh : public Input {
   public:
       InputHigh(string name);
       InputHigh(int id);
       ~InputHigh();
 
       virtual bool evaluateOutput();
-      // This gets overridden since it should be able to evaluate without and inputEdges!
-      virtual bool canEvaluate();
   private:
   };
 

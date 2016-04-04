@@ -7,9 +7,9 @@
 namespace Circuit {
   InputHigh Assign_InputHigh(nodeType::INPUT_HIGH);
 
-  InputHigh::InputHigh(string name) : Node(name) {}
+  InputHigh::InputHigh(string name) : Input(name) {}
 
-  InputHigh::InputHigh(int id) : Node(){
+  InputHigh::InputHigh(int id) : Input(""){
       NodeFactory::assign(
           id,
           CircuitUtility::Constructor<InputHigh, string>
@@ -19,10 +19,6 @@ namespace Circuit {
   InputHigh::~InputHigh() {};
 
   bool InputHigh::evaluateOutput() {
-      return true;
-  }
-
-  bool InputHigh::canEvaluate() {
       return true;
   }
 }
