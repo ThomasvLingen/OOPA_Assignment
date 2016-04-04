@@ -24,13 +24,13 @@ int main() {
     CircuitParsing::CircuitParser bananen(peren.output);
     cout << "[Stage 1 parsing] END" << endl;
 
-    Circuit::Node* i_gate1  = NodeFactory::create(nodeType::AND, "Input AND 1");
-    Circuit::Node* i_gate2  = NodeFactory::create(nodeType::AND, "Input AND 2");
+    Circuit::Node* i_gate1  = NodeFactory::create(nodeType::AND, "Input AND");
+    Circuit::Node* i_gate2  = NodeFactory::create(nodeType::OR, "Input OR");
     Circuit::Node* top_gate = NodeFactory::create(nodeType::AND, "Top AND");
 
     Circuit::Node* i1       = NodeFactory::create(nodeType::INPUT_HIGH, "input 1");
     Circuit::Node* i2       = NodeFactory::create(nodeType::INPUT_HIGH, "input 2");
-    Circuit::Node* i3       = NodeFactory::create(nodeType::INPUT_HIGH, "input 3");
+    Circuit::Node* i3       = NodeFactory::create(nodeType::INPUT_LOW, "input 3");
     Circuit::Node* i4       = NodeFactory::create(nodeType::INPUT_HIGH, "input 4");
 
     i_gate1->addEdge(i1);

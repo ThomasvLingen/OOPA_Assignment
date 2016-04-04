@@ -24,6 +24,7 @@ set(SOURCE_FILES
     Circuit/Nodes/Gate.hpp              Circuit/Nodes/Gate.cpp
     Circuit/Nodes/AndGate.hpp           Circuit/Nodes/AndGate.cpp
     Circuit/Nodes/NotGate.hpp           Circuit/Nodes/NotGate.cpp
+    Circuit/Nodes/OrGate.hpp            Circuit/Nodes/OrGate.cpp
     Circuit/Nodes/Input.hpp             Circuit/Nodes/Input.cpp
     Circuit/Nodes/InputHigh.hpp         Circuit/Nodes/InputHigh.cpp
     Circuit/Nodes/InputLow.hpp          Circuit/Nodes/InputLow.cpp
