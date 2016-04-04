@@ -45,6 +45,10 @@ namespace Circuit {
       }
   }
 
+  void Node::addEdge(Node *toAdd) {
+      toAdd->addInput(this);
+  }
+
   void Node::update() {
       this->evaluate();
   }

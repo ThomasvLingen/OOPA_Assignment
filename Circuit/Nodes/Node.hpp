@@ -35,6 +35,7 @@ namespace Circuit {
       void evaluate();
 
       void addInput(Node* toAdd);
+      void addEdge(Node* toAdd);
   private:
   };
 }

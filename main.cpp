@@ -33,12 +33,12 @@ int main() {
     Circuit::Node* i3       = NodeFactory::create(nodeType::INPUT_LOW, "input 3");
     Circuit::Node* i4       = NodeFactory::create(nodeType::INPUT_HIGH, "input 4");
 
-    i_gate1->addInput(i1);
-    i_gate1->addInput(i2);
-    i_gate2->addInput(i3);
-    i_gate2->addInput(i4);
-    top_gate->addInput(i_gate1);
-    top_gate->addInput(i_gate2);
+    i1->addEdge(i_gate1);
+    i2->addEdge(i_gate1);
+    i3->addEdge(i_gate2);
+    i4->addEdge(i_gate2);
+    i_gate1->addEdge(top_gate);
+    i_gate2->addEdge(top_gate);
 
     cout << top_gate->output << " " << top_gate->evaluated << endl;
     i1->evaluate();
@@ -54,8 +54,8 @@ int main() {
     Circuit::Node* not_gate = NodeFactory::create(nodeType::NOT, "Not Gate");
     Circuit::Node* not_probe = NodeFactory::create(nodeType::PROBE, "Not Probe");
 
-    not_gate->addInput(not_inp);
-    not_probe->addInput(not_gate);
+    not_inp->addEdge(not_gate);
+    not_gate->addEdge(not_probe);
 
     cout << "NOT gate: " << not_probe->output << " " << not_probe->evaluated << endl;
     not_inp->evaluate();
