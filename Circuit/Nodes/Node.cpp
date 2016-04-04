@@ -21,6 +21,21 @@ namespace Circuit {
       }
   }
 
+  bool Node::canEvaluate() {
+      if (this->inputEdges.size() != this->requiredInputs) {
+          return false;
+      }
+
+      bool allInputsEvaluated = true;
+
+      for (Node* node : this->inputEdges) {
+          // Fancy!
+          allInputsEvaluated &= node->evaluated;
+      }
+
+      return allInputsEvaluated;
+  }
+
   void Node::addEdge(Node *toAdd) {
       if (this->inputEdges.size() < this->requiredInputs) {
           this->inputEdges.push_back(toAdd);

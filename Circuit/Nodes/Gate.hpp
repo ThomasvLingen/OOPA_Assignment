@@ -15,8 +15,6 @@ namespace Circuit{
   class Gate : public Node {
   public:
       Gate(string name);
-
-      virtual bool canEvaluate();
   private:
   };
 }

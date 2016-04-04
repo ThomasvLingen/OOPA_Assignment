@@ -15,8 +15,6 @@ namespace Circuit {
   class Input : public Node {
   public:
       Input(string name);
-
-      virtual bool canEvaluate();
   private:
   };
 }
