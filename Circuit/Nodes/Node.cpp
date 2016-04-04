@@ -22,7 +22,7 @@ namespace Circuit {
   }
 
   void Node::addEdge(Node *toAdd) {
-      if (this->inputEdges.size() <= 2) {
+      if (this->inputEdges.size() < this->requiredInputs) {
           this->inputEdges.push_back(toAdd);
           this->observe(*toAdd);
       } else {

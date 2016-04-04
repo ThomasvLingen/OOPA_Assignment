@@ -23,10 +23,11 @@ namespace Circuit {
   public:
       Node(string name="DEFAULT_NAME");
 
+      string name;
       vector<Node*> inputEdges;
+      int requiredInputs;
       bool output;
       bool evaluated;
-      string name;
 
       virtual bool canEvaluate()=0;
       virtual bool evaluateOutput()=0;
