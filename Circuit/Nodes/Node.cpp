@@ -21,15 +21,6 @@ namespace Circuit {
       }
   }
 
-  bool Node::canEvaluate() {
-      // This has to be specifically checked first, to prevent us from checking a non-existant value
-      if (this->inputEdges[0] && this->inputEdges[1]) {
-          return this->inputEdges[0]->evaluated && this->inputEdges[1]->evaluated;
-      } else {
-          return false;
-      }
-  }
-
   void Node::addEdge(Node *toAdd) {
       if (this->inputEdges.size() <= 2) {
           this->inputEdges.push_back(toAdd);

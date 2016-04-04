@@ -10,8 +10,6 @@ namespace Circuit {
 
   }
 
-  Input::~Input() {};
-
   bool Input::canEvaluate() {
       return true;
   }

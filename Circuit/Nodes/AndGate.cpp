@@ -7,9 +7,9 @@
 namespace Circuit {
   AndGate Assign_AndGate(nodeType::AND);
 
-  AndGate::AndGate(string name) : Node(name) {}
+  AndGate::AndGate(string name) : Gate(name) {}
 
-  AndGate::AndGate(int id) : Node() {
+  AndGate::AndGate(int id) : Gate("") {
       NodeFactory::assign(
           id,
           CircuitUtility::Constructor<AndGate, string>

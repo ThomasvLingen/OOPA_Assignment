@@ -9,14 +9,14 @@
 
 #include "Circuit/NodeFactory.hpp"
 #include "Circuit/NodeTypes.hpp"
-#include "Circuit/Nodes/Node.hpp"
+#include "Circuit/Nodes/Gate.hpp"
 #include "CircuitUtility/Constructor.hpp"
 
 
 namespace Circuit {
   using std::string;
 
-  class AndGate : public Node {
+  class AndGate : public Gate {
   public:
       AndGate(string name);
       AndGate(int id);

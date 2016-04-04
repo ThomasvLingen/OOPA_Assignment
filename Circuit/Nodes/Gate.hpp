@@ -2,19 +2,19 @@
 // Created by mafn on 4/4/16.
 //
 
-#ifndef OOPA_CIRCUITSIM_INPUT_HPP
-#define OOPA_CIRCUITSIM_INPUT_HPP
+#ifndef OOPA_CIRCUITSIM_GATE_HPP
+#define OOPA_CIRCUITSIM_GATE_HPP
 
 #include <string>
 
 #include "Circuit/Nodes/Node.hpp"
 
-namespace Circuit {
+namespace Circuit{
   using std::string;
 
-  class Input : public Node {
+  class Gate : public Node {
   public:
-      Input(string name);
+      Gate(string name);
 
       virtual bool canEvaluate();
   private:
@@ -22,4 +22,4 @@ namespace Circuit {
 }
 
 
-#endif //OOPA_CIRCUITSIM_INPUT_HPP
+#endif //OOPA_CIRCUITSIM_GATE_HPP
