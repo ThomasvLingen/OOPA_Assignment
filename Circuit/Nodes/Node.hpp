@@ -34,7 +34,7 @@ namespace Circuit {
       virtual void update();
       void evaluate();
 
-      void addEdge(Node* toAdd);
+      void addInput(Node* toAdd);
   private:
   };
 }

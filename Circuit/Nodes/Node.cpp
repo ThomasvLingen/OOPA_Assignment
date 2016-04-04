@@ -36,7 +36,7 @@ namespace Circuit {
       return allInputsEvaluated;
   }
 
-  void Node::addEdge(Node *toAdd) {
+  void Node::addInput(Node *toAdd) {
       if (this->inputEdges.size() < this->requiredInputs) {
           this->inputEdges.push_back(toAdd);
           this->observe(*toAdd);
