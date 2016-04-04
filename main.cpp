@@ -50,5 +50,14 @@ int main() {
     i4->evaluate();
     cout << top_gate->output << " " << top_gate->evaluated << endl;
 
+    Circuit::Node* not_inp = NodeFactory::create(nodeType::INPUT_LOW, "NOT input");
+    Circuit::Node* not_gate = NodeFactory::create(nodeType::NOT, "Not Gate");
+
+    not_gate->addEdge(not_inp);
+
+    cout << "NOT gate: " << not_gate->output << " " << not_gate->evaluated << endl;
+    not_inp->evaluate();
+    cout << "NOT gate: " << not_gate->output << " " << not_gate->evaluated << endl;
+
     return 0;
 }
