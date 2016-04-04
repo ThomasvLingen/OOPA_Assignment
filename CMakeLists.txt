@@ -28,6 +28,7 @@ set(SOURCE_FILES
     Circuit/Nodes/Input.hpp             Circuit/Nodes/Input.cpp
     Circuit/Nodes/InputHigh.hpp         Circuit/Nodes/InputHigh.cpp
     Circuit/Nodes/InputLow.hpp          Circuit/Nodes/InputLow.cpp
+    Circuit/Nodes/Probe.hpp             Circuit/Nodes/Probe.cpp
     Circuit/NodeFactory.hpp             Circuit/NodeFactory.cpp
 )
 

@@ -52,12 +52,14 @@ int main() {
 
     Circuit::Node* not_inp = NodeFactory::create(nodeType::INPUT_LOW, "NOT input");
     Circuit::Node* not_gate = NodeFactory::create(nodeType::NOT, "Not Gate");
+    Circuit::Node* not_probe = NodeFactory::create(nodeType::PROBE, "Not Probe");
 
     not_gate->addEdge(not_inp);
+    not_probe->addEdge(not_gate);
 
-    cout << "NOT gate: " << not_gate->output << " " << not_gate->evaluated << endl;
+    cout << "NOT gate: " << not_probe->output << " " << not_probe->evaluated << endl;
     not_inp->evaluate();
-    cout << "NOT gate: " << not_gate->output << " " << not_gate->evaluated << endl;
+    cout << "NOT gate: " << not_probe->output << " " << not_probe->evaluated << endl;
 
     return 0;
 }
