@@ -27,6 +27,7 @@ namespace Circuit {
 
       vector<Node*> circuit;
       vector<Node*> inputs;
+      vector<Node*> outputs;
 
       void evaluateCircuit();
 
@@ -36,9 +37,8 @@ namespace Circuit {
       void constructCircuit(InputFileData& inputCircuit);
       void constructNodes(vector<InputFileNode> circuitNodes);
       void constructEdges(CircuitParsing::edgeMap edgeMap);
-      void constructEdge(InputFileNode* origin, vector<InputFileNode*> targets);
 
-      bool isInputNode(Node* node);
+      void constructEdge(InputFileNode* origin, vector<InputFileNode*> targets);
 
       Node* getNode(string name);
   };

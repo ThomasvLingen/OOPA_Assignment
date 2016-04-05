@@ -28,14 +28,14 @@ namespace Circuit {
 
           this->circuit.push_back(constructedNode);
 
-          if (this->isInputNode(constructedNode)) {
+          if (node.type == nodeType::INPUT_HIGH || node.type == nodeType::INPUT_LOW) {
               this->inputs.push_back(constructedNode);
           }
-      }
-  }
 
-  bool Circuit::isInputNode(Node *node) {
-      return node->requiredInputs == 0;
+          if (node.type == nodeType::PROBE) {
+              this->outputs.push_back(constructedNode);
+          }
+      }
   }
 
   void Circuit::constructEdges(CircuitParsing::edgeMap edgeMap) {

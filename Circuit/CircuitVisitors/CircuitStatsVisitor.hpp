@@ -9,6 +9,7 @@
 
 #include "Circuit/CircuitVisitors/CircuitVisitor.hpp"
 #include "Circuit/Circuit.hpp"
+#include "Circuit/Nodes/Node.hpp"
 
 namespace CircuitVisitors {
   using std::cout;
@@ -19,6 +20,9 @@ namespace CircuitVisitors {
       CircuitStatsVisitor();
 
       void visit(Circuit::Circuit& elem);
+      void listInputs(Circuit::Circuit& elem);
+      void listOutputs(Circuit::Circuit& elem);
+      void listNode(Circuit::Node* node);
   };
 }
 
