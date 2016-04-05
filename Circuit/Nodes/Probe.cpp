@@ -9,7 +9,6 @@ namespace Circuit {
 
   Probe::Probe(string name) : Node(name){
       this->requiredInputs = 1;
-      this->isConstant = false;
   }
 
   Probe::Probe(int id) : Node() {

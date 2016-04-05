@@ -28,10 +28,14 @@ namespace Circuit {
 
           this->circuit.push_back(constructedNode);
 
-          if (constructedNode->isConstant) {
+          if (this->isInputNode(constructedNode)) {
               this->inputs.push_back(constructedNode);
           }
       }
+  }
+
+  bool Circuit::isInputNode(Node *node) {
+      return node->requiredInputs == 0;
   }
 
   void Circuit::constructEdges(CircuitParsing::edgeMap edgeMap) {

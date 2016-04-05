@@ -29,8 +29,6 @@ namespace Circuit {
       bool output;
       bool evaluated;
 
-      bool isConstant;
-
       virtual bool canEvaluate();
       virtual bool evaluateOutput()=0;
       virtual void update();

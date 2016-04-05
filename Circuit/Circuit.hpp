@@ -35,6 +35,8 @@ namespace Circuit {
       void constructEdges(CircuitParsing::edgeMap edgeMap);
       void constructEdge(InputFileNode* origin, vector<InputFileNode*> targets);
 
+      bool isInputNode(Node* node);
+
       Node* getNode(string name);
   };
 }
