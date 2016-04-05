@@ -12,6 +12,7 @@
 #include "CircuitParsing/InputFileNode.hpp"
 #include "Circuit/Nodes/Node.hpp"
 #include "Circuit/NodeFactory.hpp"
+#include "Circuit/CircuitVisitors/CircuitVisitor.hpp"
 
 namespace Circuit {
   using std::vector;
@@ -28,6 +29,8 @@ namespace Circuit {
       vector<Node*> inputs;
 
       void evaluateCircuit();
+
+      void accept(CircuitVisitors::CircuitVisitor& v);
   private:
 
       void constructCircuit(InputFileData& inputCircuit);

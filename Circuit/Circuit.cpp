@@ -63,4 +63,8 @@ namespace Circuit {
 
       return nullptr;
   }
+
+  void Circuit::accept(CircuitVisitors::CircuitVisitor& v) {
+      v.visit(*this);
+  }
 }
