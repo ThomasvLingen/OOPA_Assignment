@@ -8,5 +8,6 @@ namespace Circuit {
 
   Input::Input(string name) : Node(name) {
     this->requiredInputs = 0;
+      this->isConstant = true;
   }
 }

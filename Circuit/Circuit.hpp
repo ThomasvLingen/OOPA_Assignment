@@ -23,7 +23,11 @@ namespace Circuit {
   public:
       Circuit(InputFileData& inputCircuit);
       virtual ~Circuit();
+
       vector<Node*> circuit;
+      vector<Node*> inputs;
+
+      void evaluateCircuit();
   private:
 
       void constructCircuit(InputFileData& inputCircuit);

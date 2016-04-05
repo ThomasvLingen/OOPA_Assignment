@@ -40,6 +40,8 @@ int main() {
         cout << endl << endl;
     }
 
+    zoodle.evaluateCircuit();
+
     Circuit::Node* i_gate1  = NodeFactory::create(nodeType::AND, "Input AND");
     Circuit::Node* i_gate2  = NodeFactory::create(nodeType::OR, "Input OR");
     Circuit::Node* top_gate = NodeFactory::create(nodeType::AND, "Top AND");

@@ -16,9 +16,21 @@ namespace Circuit {
       this->constructEdges(inputCircuit.edges);
   }
 
+  void Circuit::evaluateCircuit() {
+      for (Node* inputNode : this->inputs) {
+          inputNode->evaluate();
+      }
+  }
+
   void Circuit::constructNodes(vector<InputFileNode> circuitNodes) {
       for (InputFileNode& node : circuitNodes) {
-          this->circuit.push_back(NodeFactory::create(node.type, node.name));
+          Node* constructedNode = NodeFactory::create(node.type, node.name);
+
+          this->circuit.push_back(constructedNode);
+
+          if (constructedNode->isConstant) {
+              this->inputs.push_back(constructedNode);
+          }
       }
   }
 

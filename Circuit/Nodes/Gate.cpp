@@ -8,5 +8,6 @@ namespace Circuit {
   Gate::Gate(string name) : Node(name) {
       // This is merely a default a value, and can be overriden in concrete gates (f/e NOT gate)
       this->requiredInputs = 2;
+      this->isConstant = false;
   }
 }
