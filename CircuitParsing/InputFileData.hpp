@@ -14,6 +14,8 @@ namespace CircuitParsing {
   using std::vector;
   using std::map;
 
+  typedef map<InputFileNode*, vector<InputFileNode*>> edgeMap;
+
   class InputFileData {
   private:
   public:
@@ -21,7 +23,7 @@ namespace CircuitParsing {
       virtual ~InputFileData();
 
       vector<InputFileNode> nodes;
-      map<InputFileNode*, vector<InputFileNode*>> edges;
+      edgeMap edges;
       InputFileNode* getNode(string name);
   };
 

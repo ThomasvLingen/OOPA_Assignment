@@ -4,7 +4,7 @@
 #include "CircuitParsing/CircuitParser.hpp"
 #include "Circuit/NodeFactory.hpp"
 #include "Circuit/Nodes/Node.hpp"
-#include "Circuit/NodeTypes.hpp"
+#include "Circuit/Circuit.hpp"
 
 using namespace std;
 using Circuit::NodeFactory;
@@ -23,6 +23,22 @@ int main() {
     cout << "[Stage 1 parsing] START" << endl;
     CircuitParsing::CircuitParser bananen(peren.output);
     cout << "[Stage 1 parsing] END" << endl;
+
+    Circuit::Circuit zoodle(bananen.output);
+
+    for(Circuit::Node* foo : zoodle.circuit) {
+        cout << foo->name << " with " << foo->requiredInputs << endl;
+    }
+
+    for(Circuit::Node* foo : zoodle.circuit) {
+        cout << foo->name << " with inputs: " << endl;
+
+        for (Circuit::Node* edge : foo->inputEdges) {
+            cout << edge->name << " ";
+        }
+
+        cout << endl << endl;
+    }
 
     Circuit::Node* i_gate1  = NodeFactory::create(nodeType::AND, "Input AND");
     Circuit::Node* i_gate2  = NodeFactory::create(nodeType::OR, "Input OR");

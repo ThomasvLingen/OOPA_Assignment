@@ -20,6 +20,7 @@ set(SOURCE_FILES
     Circuit/NodeTypes.hpp               Circuit/NodeTypes.cpp
     Circuit/Observed.hpp                Circuit/Observed.cpp
     Circuit/Observer.hpp                Circuit/Observer.cpp
+    Circuit/Circuit.hpp                 Circuit/Circuit.cpp
     Circuit/Nodes/Node.hpp              Circuit/Nodes/Node.cpp
     Circuit/Nodes/Gate.hpp              Circuit/Nodes/Gate.cpp
     Circuit/Nodes/AndGate.hpp           Circuit/Nodes/AndGate.cpp
