@@ -7,6 +7,7 @@
 #include "Circuit/Circuit.hpp"
 #include "Circuit/CircuitVisitors/CircuitStatsVisitor.hpp"
 #include "Circuit/CircuitVisitors/UnconnectedVisitor.hpp"
+#include "Circuit/CircuitVisitors/CircuitFeedbackVisitor.hpp"
 
 using namespace std;
 using Circuit::NodeFactory;
@@ -31,9 +32,18 @@ int main(int argc, char* argv[]) {
     cout << "[Circuit constr. ] END" << endl;
 
     cout << "[Circuit validate] START" << endl;
+
     try {
         CircuitVisitors::UnconnectedVisitor ucvisitor;
         zoodle.accept(ucvisitor);
+    } catch (string msg) {
+        cout << msg << endl;
+        return -1;
+    }
+
+    try {
+        CircuitVisitors::CircuitFeedbackVisitor fbvisitor;
+        zoodle.accept(fbvisitor);
     } catch (string msg) {
         cout << msg << endl;
         return -1;

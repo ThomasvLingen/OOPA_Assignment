@@ -34,6 +34,7 @@ set(SOURCE_FILES
     Circuit/CircuitVisitors/CircuitVisitor.hpp      Circuit/CircuitVisitors/CircuitVisitor.cpp
     Circuit/CircuitVisitors/CircuitStatsVisitor.hpp Circuit/CircuitVisitors/CircuitStatsVisitor.cpp
     Circuit/CircuitVisitors/UnconnectedVisitor.hpp  Circuit/CircuitVisitors/UnconnectedVisitor.cpp
+    Circuit/CircuitVisitors/CircuitFeedbackVisitor.hpp Circuit/CircuitVisitors/CircuitFeedbackVisitor.cpp
 )
 
 add_executable(OOPA_CircuitSim ${SOURCE_FILES})
