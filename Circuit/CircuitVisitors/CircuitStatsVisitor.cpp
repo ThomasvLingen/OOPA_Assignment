@@ -5,7 +5,9 @@
 #include "CircuitStatsVisitor.hpp"
 
 namespace CircuitVisitors {
-  CircuitStatsVisitor::CircuitStatsVisitor() {}
+  CircuitStatsVisitor::CircuitStatsVisitor() {
+      this->name = "OUTPUT";
+  }
 
   void CircuitStatsVisitor::visit(Circuit::Circuit &elem) {
       cout << "== Circuit stats ==" << endl;

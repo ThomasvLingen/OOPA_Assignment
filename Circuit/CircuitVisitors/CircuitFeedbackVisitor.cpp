@@ -5,7 +5,9 @@
 #include "CircuitFeedbackVisitor.hpp"
 
 namespace CircuitVisitors {
-  CircuitFeedbackVisitor::CircuitFeedbackVisitor() {}
+  CircuitFeedbackVisitor::CircuitFeedbackVisitor() {
+      this->name = "FEEDBACK DETECTION";
+  }
 
   // Assumption 1: for every node, every input has to somehow lead back to an input
   // Assumption 2: This has to ALWAYS be in nodecount or less steps

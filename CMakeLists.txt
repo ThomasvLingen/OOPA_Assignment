@@ -7,6 +7,7 @@ include_directories(${CMAKE_SOURCE_DIR})
 
 set(SOURCE_FILES
     main.cpp
+    Circuit/CircuitSimulator.hpp                    Circuit/CircuitSimulator.cpp
     CircuitParsing/Lexeme.hpp                       CircuitParsing/Lexeme.cpp
     CircuitParsing/Stage1Lexer.hpp                  CircuitParsing/Stage1Lexer.cpp
     CircuitParsing/Stage1LexemePool.hpp             CircuitParsing/Stage1LexemePool.cpp

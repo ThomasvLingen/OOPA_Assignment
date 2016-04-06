@@ -5,7 +5,9 @@
 #include "UnconnectedVisitor.hpp"
 
 namespace CircuitVisitors {
-  UnconnectedVisitor::UnconnectedVisitor() {}
+  UnconnectedVisitor::UnconnectedVisitor() {
+      this->name = "UNCONNECTED DETECTION";
+  }
 
   void UnconnectedVisitor::visit(Circuit::Circuit &elem) {
       for (Circuit::Node* node : elem.circuit) {

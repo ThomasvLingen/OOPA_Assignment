@@ -5,13 +5,19 @@
 #ifndef OOPA_CIRCUITSIM_CIRCUITVISITOR_HPP
 #define OOPA_CIRCUITSIM_CIRCUITVISITOR_HPP
 
+#include <string>
+
 namespace Circuit {
   class Circuit;
 }
 
 namespace CircuitVisitors {
+  using std::string;
+
   class CircuitVisitor {
   public:
+      string name;
+
       virtual void visit(Circuit::Circuit& elem)=0;
   };
 }
