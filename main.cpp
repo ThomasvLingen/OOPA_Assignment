@@ -15,9 +15,16 @@ using namespace std;
 using Circuit::NodeFactory;
 using Circuit::nodeType;
 
+void printUsage();
+
 int main(int argc, char* argv[]) {
+    if (argc < 2) {
+        printUsage();
+        return 0;
+    }
+
     Circuit::CircuitSimulator sim(
-        "/home/mafn/School/OOPatronen/Practicum/Assignment/circuit4.txt",
+        argv[1],
         {
                 new CircuitVisitors::UnconnectedVisitor(),
                 new CircuitVisitors::CircuitFeedbackVisitor(),
@@ -26,4 +33,8 @@ int main(int argc, char* argv[]) {
     );
 
     return 0;
+}
+
+void printUsage() {
+    cout << "Usage: OOPA_CircuitSim [CIRCUITFILE]" << endl;
 }

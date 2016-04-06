@@ -14,7 +14,9 @@ namespace Circuit {
   }
 
   CircuitSimulator::~CircuitSimulator() {
-      delete[] this->plugins;
+      for (CircuitVisitors::CircuitVisitor* obj : this->plugins) {
+          delete obj;
+      }
   }
 
   void CircuitSimulator::runPlugins() {
