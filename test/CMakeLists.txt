@@ -33,6 +33,45 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Trivial example using gtest and gmock
-add_executable(OOPA_test test_test.cpp)
+include_directories(
+    "${OOPA_test_SOURCE_DIR}/../CircuitParsing"
+    "${OOPA_test_SOURCE_DIR}/../Circuit"
+    "${OOPA_test_SOURCE_DIR}/../Circuit/Nodes"
+)
+set(OOPA_SRC
+    ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitSimulator.hpp ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitSimulator.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Lexeme.hpp ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Lexeme.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage1Lexer.hpp                  ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage1Lexer.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage1LexemePool.hpp             ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage1LexemePool.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/LexemePool.hpp                   ${OOPA_test_SOURCE_DIR}/../CircuitParsing/LexemePool.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage2Lexer.hpp                  ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage2Lexer.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage2LexemePool.hpp             ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Stage2LexemePool.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/InputFileNode.hpp                ${OOPA_test_SOURCE_DIR}/../CircuitParsing/InputFileNode.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/InputFileData.hpp                ${OOPA_test_SOURCE_DIR}/../CircuitParsing/InputFileData.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitParsing/CircuitParser.hpp                ${OOPA_test_SOURCE_DIR}/../CircuitParsing/CircuitParser.cpp
+    ${OOPA_test_SOURCE_DIR}/../CircuitUtility/StrUtil.hpp                      ${OOPA_test_SOURCE_DIR}/../CircuitUtility/StrUtil.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/NodeTypes.hpp                           ${OOPA_test_SOURCE_DIR}/../Circuit/NodeTypes.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Observed.hpp                            ${OOPA_test_SOURCE_DIR}/../Circuit/Observed.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Observer.hpp                            ${OOPA_test_SOURCE_DIR}/../Circuit/Observer.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Circuit.hpp                             ${OOPA_test_SOURCE_DIR}/../Circuit/Circuit.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Node.hpp                          ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Node.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Gate.hpp                          ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Gate.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/AndGate.hpp                       ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/AndGate.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/NotGate.hpp                       ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/NotGate.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/OrGate.hpp                        ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/OrGate.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/NorGate.hpp                       ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/NorGate.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/XorGate.hpp                       ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/XorGate.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/NandGate.hpp                      ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/NandGate.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Input.hpp                         ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Input.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/InputHigh.hpp                     ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/InputHigh.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/InputLow.hpp                      ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/InputLow.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Probe.hpp                         ${OOPA_test_SOURCE_DIR}/../Circuit/Nodes/Probe.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/NodeFactory.hpp                         ${OOPA_test_SOURCE_DIR}/../Circuit/NodeFactory.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitVisitor.hpp      ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitVisitor.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitStatsVisitor.hpp ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitStatsVisitor.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/UnconnectedVisitor.hpp  ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/UnconnectedVisitor.cpp
+    ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitFeedbackVisitor.hpp ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitFeedbackVisitor.cpp
+)
+
+add_executable(OOPA_test ${OOPA_SRC} test_test.cpp test_AndGate.cpp)
 target_link_libraries(OOPA_test gtest gmock_main)
-add_test(NAME example_test COMMAND test_test)
