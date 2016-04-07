@@ -19,6 +19,6 @@ namespace Circuit {
   XorGate::~XorGate() {}
 
   bool XorGate::evaluateOutput() {
-      return this->inputEdges[0]->output ^ this->inputEdges[1]->output;
+      return (this->inputEdges[0]->output != this->inputEdges[1]->output);
   }
 }
