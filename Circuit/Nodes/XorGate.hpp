@@ -25,7 +25,7 @@ namespace Circuit {
       virtual bool evaluateOutput();
   };
 
-  extern XorGate Assign_OrGate;
+  extern XorGate Assign_XorGate;
 }
 
 
