@@ -6,6 +6,7 @@
 #include "gmock/gmock.h"
 
 TEST(Dummy, zoodle) {
+    // This test merely exists to see if testing works.
     EXPECT_EQ(1, 1);
 }
 

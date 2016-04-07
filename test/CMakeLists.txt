@@ -33,11 +33,6 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Trivial example using gtest and gmock
-include_directories(
-    "${OOPA_test_SOURCE_DIR}/../CircuitParsing"
-    "${OOPA_test_SOURCE_DIR}/../Circuit"
-    "${OOPA_test_SOURCE_DIR}/../Circuit/Nodes"
-)
 set(OOPA_SRC
     ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitSimulator.hpp ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitSimulator.cpp
     ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Lexeme.hpp ${OOPA_test_SOURCE_DIR}/../CircuitParsing/Lexeme.cpp
@@ -73,5 +68,5 @@ set(OOPA_SRC
     ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitFeedbackVisitor.hpp ${OOPA_test_SOURCE_DIR}/../Circuit/CircuitVisitors/CircuitFeedbackVisitor.cpp
 )
 
-add_executable(OOPA_test ${OOPA_SRC} test_test.cpp test_AndGate.cpp)
+add_executable(OOPA_test ${OOPA_SRC} test_test.cpp test_AndGate.cpp mock_input.hpp mock_probe.hpp)
 target_link_libraries(OOPA_test gtest gmock_main)
