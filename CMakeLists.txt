@@ -42,3 +42,4 @@ set(SOURCE_FILES
 )
 
 add_executable(OOPA_CircuitSim ${SOURCE_FILES})
+add_subdirectory(test)
