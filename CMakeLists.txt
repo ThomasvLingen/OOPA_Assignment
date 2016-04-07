@@ -28,6 +28,7 @@ set(SOURCE_FILES
     Circuit/Nodes/NotGate.hpp                       Circuit/Nodes/NotGate.cpp
     Circuit/Nodes/OrGate.hpp                        Circuit/Nodes/OrGate.cpp
     Circuit/Nodes/XorGate.hpp                       Circuit/Nodes/XorGate.cpp
+    Circuit/Nodes/NandGate.hpp                      Circuit/Nodes/NandGate.cpp
     Circuit/Nodes/Input.hpp                         Circuit/Nodes/Input.cpp
     Circuit/Nodes/InputHigh.hpp                     Circuit/Nodes/InputHigh.cpp
     Circuit/Nodes/InputLow.hpp                      Circuit/Nodes/InputLow.cpp
