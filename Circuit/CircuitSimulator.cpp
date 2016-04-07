@@ -10,6 +10,7 @@ namespace Circuit {
 
       this->circuit = parseInputFile(inputFilePath);
 
+      this->runSimulation();
       this->runPlugins();
   }
 
@@ -17,6 +18,12 @@ namespace Circuit {
       for (CircuitVisitors::CircuitVisitor* obj : this->plugins) {
           delete obj;
       }
+  }
+
+  void CircuitSimulator::runSimulation() {
+      this->printPhaseMessage(true, "SIMULATION");
+      this->circuit->evaluateCircuit();
+      this->printPhaseMessage(false, "SIMULATION");
   }
 
   void CircuitSimulator::runPlugins() {

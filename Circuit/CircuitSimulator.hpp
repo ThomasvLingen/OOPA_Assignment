@@ -32,6 +32,7 @@ namespace Circuit {
 
       Circuit* parseInputFile(string inputFilePath);
       void printPhaseMessage(bool start, string phaseName);
+      void runSimulation();
       void runPlugins();
   };
 }
